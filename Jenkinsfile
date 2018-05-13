@@ -6,6 +6,7 @@ node('linux') {
      }
   
   stage('Build') {
+      sh 'docker build -t classweb:1.0 .'
     }
   
   stage('Test') {
