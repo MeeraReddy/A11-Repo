@@ -6,7 +6,11 @@ node('linux') {
      }
   
   stage('Build') {
-      sh 'docker build -t classweb:1.0 .'
+	  
+	    		sh 'docker stop classweb1'
+
+	    		sh 'docker rm classweb1'
+      			sh 'docker build -t classweb:1.0 .'
     }
   
   stage('Test') {
@@ -15,9 +19,6 @@ node('linux') {
 
 	    		sh 'curl -s 10.120.1.140'
 
-	    		sh 'docker stop classweb1'
-
-	    		sh 'docker rm classweb1'
    }
   
 }
