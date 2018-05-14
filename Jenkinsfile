@@ -7,7 +7,9 @@ node('linux') {
   
   stage('Build') {
 	  
-	    		
+	    		sh 'docker stop classweb1'
+	  		sh 'docker rm classweb1'
+
       			sh 'docker build -t classweb:1.0 .'
     }
   
@@ -16,9 +18,8 @@ node('linux') {
          		sh 'docker run -d -p 80:80 --env NGINX_PORT=80 --name classweb1 classweb:1.0'
 
 	    		sh 'curl -s 10.120.1.194'
-	  		sh 'docker stop classweb1'
 
-	    		sh 'docker rm classweb1'
+	    		
 
    }
   
